@@ -44,8 +44,9 @@ async function invokeAction({ action, id, name, email, phone }) {
           console.log(
             '\n',
             chalk.green(
-              chalk.blue.bold(contacts.length) +
-                ' в списке, смотрите таблицу ниже >>>',
+              ' В списке ' +
+                chalk.blue.bold(contacts.length) +
+                '-контактов, смотрите таблицу ниже >>>',
             ),
           );
           console.table(contacts);
@@ -95,10 +96,11 @@ async function invokeAction({ action, id, name, email, phone }) {
         console.log(
           '\n',
           chalk.green(
-            'Contact ' +
+            'Контакт ' +
               chalk.blue.bold(newContact.name) +
-              ' добавлено в список id: ' +
-              chalk.blue.bold(newContact.id),
+              ' был добавлен в список контактов, id= ' +
+              chalk.blue.bold(newContact.id) +
+              ' смотрите таблицу ниже >>>',
           ),
         );
         console.table(contacts);
@@ -124,13 +126,17 @@ async function invokeAction({ action, id, name, email, phone }) {
         console.log(
           '\n',
           chalk.green(
-            'Контакт с  ID: ' + chalk.blue.bold(id) + ' был удален из списка',
+            'Контакт с  ID: ' +
+              chalk.blue.bold(id) +
+              ' был удален из списка, смотрите таблицу ниже >>>',
           ),
         );
 
         if (!contacts.length) {
           console.log(
-            chalk.yellow('Это был последний контакт. Список теперь пуст!'),
+            chalk.yellow(
+              'Это был последний контакт. Список контактов теперь пуст!',
+            ),
           );
           return;
         }
@@ -142,7 +148,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     default:
-      console.warn('\x1B[31m Неизвестный тип действия!');
+      console.warn('\x1B[31m Неизвестная команда!');
   }
 }
 
