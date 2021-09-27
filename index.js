@@ -17,7 +17,7 @@ const chalk = require('chalk');
 
 const {
   listContacts,
-  getContactById,
+  getContactId,
   removeContact,
   addContact,
 } = require('./contacts');
@@ -62,13 +62,13 @@ async function invokeAction({ action, id, name, email, phone }) {
 
     case 'get':
       try {
-        const contact = await getContactById(id);
+        const contact = await getContactId(id);
 
         if (contact) {
           console.log(
             '\n',
             chalk.green(
-              'Найден контакт' +
+              'Найден контакт ' +
                 chalk.blue.bold(contact.name) +
                 ' с ID= ' +
                 chalk.blue.bold(contact.id),
@@ -80,7 +80,7 @@ async function invokeAction({ action, id, name, email, phone }) {
           return;
         }
         console.log(
-          chalk.yellow(
+          chalk.red(
             'Нет контакта с ID= ' +
               chalk.blue.bold(id) +
               ' в списке, смотрите таблицу ниже >>>',
@@ -118,7 +118,7 @@ async function invokeAction({ action, id, name, email, phone }) {
 
         if (!contacts) {
           console.log(
-            chalk.yellow(
+            chalk.red(
               'Нет контакта с ID= ' +
                 chalk.blue.bold(id) +
                 ' в списке, смотрите таблицу ниже >>>',
@@ -133,7 +133,7 @@ async function invokeAction({ action, id, name, email, phone }) {
         console.log(
           '\n',
           chalk.green(
-            'Контакт с  ID=' +
+            'Контакт с  ID= ' +
               chalk.blue.bold(id) +
               ' был удален из списка, смотрите таблицу ниже >>>',
           ),
@@ -141,7 +141,7 @@ async function invokeAction({ action, id, name, email, phone }) {
 
         if (!contacts.length) {
           console.log(
-            chalk.yellow(
+            chalk.red(
               'Это был последний контакт. Список контактов теперь пуст!',
             ),
           );
