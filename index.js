@@ -70,7 +70,7 @@ async function invokeAction({ action, id, name, email, phone }) {
             chalk.green(
               'Найден контакт' +
                 chalk.blue.bold(contact.name) +
-                ' с ID: ' +
+                ' с ID= ' +
                 chalk.blue.bold(contact.id),
             ),
           );
@@ -81,9 +81,12 @@ async function invokeAction({ action, id, name, email, phone }) {
         }
         console.log(
           chalk.yellow(
-            'Нет контакта с ID: ' + chalk.blue.bold(id) + ' в списке ',
+            'Нет контакта с ID= ' +
+              chalk.blue.bold(id) +
+              ' в списке, смотрите таблицу ниже >>>',
           ),
         );
+        console.table(contact);
       } catch (err) {
         console.error(err.message);
       }
@@ -116,9 +119,13 @@ async function invokeAction({ action, id, name, email, phone }) {
         if (!contacts) {
           console.log(
             chalk.yellow(
-              'Нет контакта с ID: ' + chalk.blue.bold(id) + ' в списке ',
+              'Нет контакта с ID= ' +
+                chalk.blue.bold(id) +
+                ' в списке, смотрите таблицу ниже >>>',
             ),
           );
+          const contacts = await listContacts();
+          console.table(contacts);
 
           return;
         }
@@ -126,7 +133,7 @@ async function invokeAction({ action, id, name, email, phone }) {
         console.log(
           '\n',
           chalk.green(
-            'Контакт с  ID: ' +
+            'Контакт с  ID=' +
               chalk.blue.bold(id) +
               ' был удален из списка, смотрите таблицу ниже >>>',
           ),

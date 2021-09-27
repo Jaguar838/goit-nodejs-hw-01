@@ -4,11 +4,15 @@
 // md.info("Hi");
 
 // Другой подход получить ф-и отдельно
-const { info, log } = require("./module");
+const { info, log } = require('./module');
 // info("Hi CommonJS");
-log("Hi CommonJS");
+log('Hi CommonJS');
 
-import("./module.mjs").then((result) => {
-  const { info } = result;
-  log("Hi ECMAScript modules");
-});
+import('./module.mjs')
+  .then(result => {
+    const { info } = result;
+    log('Hi ECMAScript modules');
+  })
+  .catch(err => {
+    console.error(err);
+  });
