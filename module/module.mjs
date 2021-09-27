@@ -11,7 +11,6 @@ const info = msg => {
 export = {
   info,
 };
-console.log(export);
 //Основное отличие:
 // CommonJS modules - синхронные
 // ECMAScript modules - асисинхронные async... await
