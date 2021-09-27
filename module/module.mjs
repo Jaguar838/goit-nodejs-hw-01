@@ -1,6 +1,6 @@
 //Modules: ECMAScript modules *.mjs
 
-const info = (msg) => {
+const info = msg => {
   console.log(`Info: ${msg}`);
 };
 
@@ -8,10 +8,10 @@ const info = (msg) => {
 //   console.log(`Log: ${msg}`);
 // };
 
-exports = {
+export = {
   info,
 };
-console.log(exports);
+console.log(export);
 //Основное отличие:
 // CommonJS modules - синхронные
 // ECMAScript modules - асисинхронные async... await

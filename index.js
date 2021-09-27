@@ -45,7 +45,7 @@ async function invokeAction({ action, id, name, email, phone }) {
             '\n',
             chalk.green(
               chalk.blue.bold(contacts.length) +
-                ' contacts in the list, see the table below >>>',
+                ' в списке, смотрите таблицу ниже >>>',
             ),
           );
           console.table(contacts);
@@ -53,7 +53,7 @@ async function invokeAction({ action, id, name, email, phone }) {
           return;
         }
 
-        console.log('There are no contacts in the list yet');
+        console.log('В списке пока нет контактов');
       } catch (err) {
         console.error(err.message);
       }
@@ -67,9 +67,9 @@ async function invokeAction({ action, id, name, email, phone }) {
           console.log(
             '\n',
             chalk.green(
-              'Found contact ' +
+              'Найден контакт' +
                 chalk.blue.bold(contact.name) +
-                ' with ID: ' +
+                ' с ID: ' +
                 chalk.blue.bold(contact.id),
             ),
           );
@@ -80,9 +80,7 @@ async function invokeAction({ action, id, name, email, phone }) {
         }
         console.log(
           chalk.yellow(
-            'There in no contact with ID: ' +
-              chalk.blue.bold(id) +
-              ' in the list',
+            'Нет контакта с ID: ' + chalk.blue.bold(id) + ' в списке ',
           ),
         );
       } catch (err) {
@@ -99,7 +97,7 @@ async function invokeAction({ action, id, name, email, phone }) {
           chalk.green(
             'Contact ' +
               chalk.blue.bold(newContact.name) +
-              ' added to list with id: ' +
+              ' добавлено в список id: ' +
               chalk.blue.bold(newContact.id),
           ),
         );
@@ -116,9 +114,7 @@ async function invokeAction({ action, id, name, email, phone }) {
         if (!contacts) {
           console.log(
             chalk.yellow(
-              'There in no contact with ID: ' +
-                chalk.blue.bold(id) +
-                ' in the list',
+              'Нет контакта с ID: ' + chalk.blue.bold(id) + ' в списке ',
             ),
           );
 
@@ -128,15 +124,13 @@ async function invokeAction({ action, id, name, email, phone }) {
         console.log(
           '\n',
           chalk.green(
-            'Contact with ID: ' +
-              chalk.blue.bold(id) +
-              ' was deleted from the list',
+            'Контакт с  ID: ' + chalk.blue.bold(id) + ' был удален из списка',
           ),
         );
 
         if (!contacts.length) {
           console.log(
-            chalk.yellow('It was the last contact. The list now is empty!'),
+            chalk.yellow('Это был последний контакт. Список теперь пуст!'),
           );
           return;
         }
@@ -148,7 +142,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     default:
-      console.warn('\x1B[31m Unknown action type!');
+      console.warn('\x1B[31m Неизвестный тип действия!');
   }
 }
 
