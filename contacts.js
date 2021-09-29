@@ -48,7 +48,6 @@ const addContact = async (name, email, phone) => {
   try {
     const contacts = await listContacts();
     const newContact = { id: crypto.randomUUID(), name, email, phone };
-    const newContact = { id: newID, name, email, phone };
     contacts.push(newContact);
 
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));

@@ -24,6 +24,7 @@ const {
 
 const program = new Command();
 program
+  .helpOption('-h, --help', 'read more information')
   .option('-a, --action <type>', 'choose action')
   .option('-i, --id <type>', 'user id')
   .option('-n, --name <type>', 'user name')
@@ -36,6 +37,21 @@ const argv = program.opts();
 
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
+    case 'help':
+      console.log(
+        'node index.js --action list -- Выводим весь список контактов',
+      );
+      console.log(
+        'node index.js --action get --id 5 -- Получаем контакт по id',
+      );
+      console.log(
+        'node index.js --action add --name Mango --email mango@gmail.com --phone 322-22-22' +
+          ' -- Добавялем контакт',
+      );
+      console.log(
+        'node index.js --action remove --id=3 -- Удаляем контакт по id',
+      );
+      break;
     case 'list':
       try {
         const contacts = await listContacts();
