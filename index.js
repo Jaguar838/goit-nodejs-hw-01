@@ -102,7 +102,8 @@ async function invokeAction({ action, id, name, email, phone }) {
               ' в списке, смотрите таблицу ниже >>>',
           ),
         );
-        console.table(contact);
+        const contacts = await listContacts();
+        console.table(contacts);
       } catch (err) {
         console.error(err.message);
       }
