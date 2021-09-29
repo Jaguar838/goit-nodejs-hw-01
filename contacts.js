@@ -1,10 +1,8 @@
 const fs = require('fs/promises');
 const path = require('path');
-// const crypto = require('crypto');
+const crypto = require('crypto');
 
 const contactsPath = path.join(__dirname, 'db', 'contacts.json');
-
-const microID = list => Math.max(...list.map(({ id }) => Number(id))) + 1;
 
 const listContacts = async () => {
   try {
@@ -49,8 +47,7 @@ const removeContact = async contactId => {
 const addContact = async (name, email, phone) => {
   try {
     const contacts = await listContacts();
-    const newID = microID(contacts);
-    // const newContact = { id: crypto.randomUUID(), name, email, phone };
+    const newContact = { id: crypto.randomUUID(), name, email, phone };
     const newContact = { id: newID, name, email, phone };
     contacts.push(newContact);
 
